@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     >
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  <link rel="stylesheet" th:href="@{signup.css}" type="text/css"/>
+  <script type="text/javascript" src="./static/togglePass.js" th:src="@{togglePass.js}" ></script>
+</head>
+<body>
+<div class="contact-us">
+  <h1>Sign Up</h1>
+</div>
+  <form method="post" th:action="@{/register}" th:object="${user}">
+    <div >
+      <div style="margin: auto;">
+        <label ><b>First Name</b><br></label>
+        <input name="firstName" type="text" class="data-input" th:field="*{firstName}" placeholder="First Name" style="margin-right: 1px;"/>
+
+
+      <div style="margin: auto;">
+        <label ><b>Last Name</b><br></label>
+        <input name="lastName" type="text" class="data-input" th:field="*{lastName}" placeholder="Last Name" style="margin-right: 1px;"/>
+
+      </div>
+
+      <div>
+        <label ><b>Email</b><br></label>
+        <input type="email" class="data-input" placeholder="Email" th:field="*{email}" name="email"  required autocomplete="email"/>
+
+      </div>
+
+
+      <div style="margin-bottom: 15px;">
+        <label for="password"><b>Password</b><br></label>
+        <input type="password" class="data-input" th:field="*{password}" id="password"  name="password" required minlength="8"/>
+
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <label for="password"><b>Password</b><br></label>
+        <input name="password_confirmation" type="password" class="data-input"  id="password-confirmation" required autocomplete="new-password"/>
+        <button class="visibility" type="button" onclick="togglePass();changeVis()" >
+          <img src="./static/vis2.png" th:src="@{vis2.png}" width="25px" height="16px" id="visIcon">
+        </button>
+      </div>
+
+      <!-- <textarea name="text" class="comment-input" placeholder="Comment" ></textarea> -->
+      <input type="submit" value="Sign Up"/>
+    </div>
+  </form>
+</body>
+</html>

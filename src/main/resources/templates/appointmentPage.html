@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="./layout/template" >
+<head>
+    <meta charset="UTF-8">
+    <title>Appointment</title>
+    <link rel="stylesheet" th:href="@{site.css}" type="text/css"/>
+</head>
+<body layout:fragment="content">
+<section id="appointment" class="appointment section-bg">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Appointment Form</h2>
+            <p>You can make an appointment with a doctor through the MEDIKA website</p>
+        </div>
+
+        <form method="post" th:action="@{/appointment}" role="form" class="php-email-form"
+              data-aos="fade-up" data-aos-delay="100" th:object="${app}">
+
+            <div class="row">
+
+                <div class="col-md-4 form-group">
+                    <label for="name">Name</label>
+                    <input type="text" th:field="*{name}" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                    <label for="email">Email</label>
+                    <input type="email" th:field="*{email}" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                    <label >Phone Number</label>
+                    <input type="tel" th:field="*{phoneNumber}" class="form-control" name="phoneNumber" id="phone" placeholder="Your Phone" required>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-4 form-group mt-3">
+                    <label for="date">Date of Appointment</label>
+                    <input type="datetime-local" th:field="*{date}" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" required>
+                </div>
+
+                <div class="col-md-4 form-group mt-3">
+                    <label for="department">Department</label>
+                    <select  id="department" class="form-select" onchange="if (this.selectedIndex) testing(this.selectedIndex);">
+                        <option value="">Select Department</option>
+
+                        <option th:each="sp:${listSpec}" value="${$sp.id}"  th:text="${sp.name}"></option>
+
+                    </select>
+                </div>
+
+                <div class="col-md-4 form-group mt-3">
+                    <label for="doctor">Doctor</label>
+                    <select name="doctor" id="doctor" class="form-select">
+                        <option value="">Select Doctor</option>
+                        <option th:each="dr:${listDoctor}" value="${dr.id}" class="{{$data->specialization_id}}" th:text="${dr.name}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <textarea class="form-control" th:field="*{message}" name="message" rows="5" placeholder="Message (Optional)"></textarea>
+            </div>
+
+            <div class="text-center"><button type="submit" class="sub">Make an Appointment</button></div>
+
+        </form>
+
+    </div>
+</section>
+</body>
+</html>

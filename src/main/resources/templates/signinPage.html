@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In</title>
+    <link rel="stylesheet" th:href="@{signin.css}" type="text/css"/>
+    <script type="text/javascript" src="./static/togglePass.js" th:src="@{togglePass.js}" ></script>
+</head>
+<body layout:fragment="content">
+    <div style="margin:50px; margin-top: 130px;">
+        <h1 style="text-align: center;color: white;">Sign In</h1>
+        <div th:if="${param.logout}" class = "alert alert-error">Logged Out</div>
+        <form method="POST"  id="form_style" th:action="@{/login}">
+            <div>
+                <lable class="form-lable" for="email">Email</lable>
+                <input class="input-box" type="Email"   name="email"  autofocus required>
+            </div>
+            <div th:if="${param.error}" class = "alert alert-error">Invalid</div>
+            <div>
+                <label class="form-lable">Password:</label>
+                <input class="input-box" type="password" id="password"  name="password" autofocus required>
+            </div>
+            <div>
+                <button class="visibility" type="button" onclick="togglePass();changeVis()">
+                    <img src="./static/vis2.png" th:src="@{vis2.png}" width="25px" height="16px" id="visIcon">
+                </button>
+            </div>
+
+            <!-- <input type="checkbox" onclick="togglePass()"> -->
+            <a href="{{ route('password.request') }}" style="text-decoration: none; float: right;margin-top: 5px;color: white;">Forgot your password?</a>
+
+
+            <div style="margin-top: 40px;">
+                <button class="clicked">
+                    Sign in
+                </button>
+            </div>
+
+
+            <div style="display: flex; margin-top: 20px;color: white;">
+                <div class="line" style="margin-right: 20px;"></div>
+                Make an account
+                <div class="line" style="margin-left:20px;"></div>
+            </div>
+            <div style="margin-top: 20px;">
+                <button class="clicked_sign" type="button" onclick="window.location.href='/signup'">
+                    Sign Up
+                </button>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

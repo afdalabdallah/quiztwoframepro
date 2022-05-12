@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="./layout/template" >
+<head>
+    <meta charset="UTF-8">
+    <title>Collaboration</title>
+    <link rel="stylesheet" th:href="@{site.css}" type="text/css"/>
+</head>
+<body layout:fragment="content">
+  <div style="width:80%; margin:auto">
+    <h1 style="font-family:Helvetica, Arial, sans-serif;
+          text-align: center;
+          font-weight:bold;
+          color:salmon;
+          margin-bottom:40px">
+      Partners
+    </h1>
+    <div >
+      <div style="width:100px; margin:auto; margin-bottom:15px">
+        <img src="../static/logo1.png" th:src="@{logo1.png}" style="width:100px; height:100px"/>
+      </div>
+
+      <p style="font-family:Helvetica, Arial, sans-serif;
+          text-align: center;
+          font-weight:bold;
+          color:red;
+          margin-bottom:28px">MEDIKA</p>
+    </div>
+  </div>
+</body>
+</html>
